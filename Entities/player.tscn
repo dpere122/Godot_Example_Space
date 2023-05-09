@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://siaila4rsrgp"]
+
+[ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
+[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
+[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4uk1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dwqa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6kvpb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Collision_Box" type="CollisionShape2D" parent="CharacterBody2D"]
+z_index = 2
+shape = SubResource("RectangleShape2D_12gyc")
+
+[node name="Space_Ship" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
+z_as_relative = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("1_u0k34")
+
+[node name="Left_Thrust" type="AnimatedSprite2D" parent="CharacterBody2D/Space_Ship"]
+z_as_relative = false
+position = Vector2(-127.273, 150)
+sprite_frames = SubResource("SpriteFrames_4uk1d")
+autoplay = "default"
+
+[node name="Right_Thrust" type="AnimatedSprite2D" parent="CharacterBody2D/Space_Ship"]
+z_as_relative = false
+position = Vector2(131.818, 154.545)
+sprite_frames = SubResource("SpriteFrames_4uk1d")
+autoplay = "default"
+frame_progress = 0.474615

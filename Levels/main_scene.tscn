@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bog2yfsesy5un"]
 
 [ext_resource type="Texture2D" uid="uid://b2aonudbvavh" path="res://static-backgrounds/Large 1024x1024/Purple Nebula/Purple_Nebula_04-1024x1024.png" id="1_qk6nt"]
-[ext_resource type="Texture2D" uid="uid://bs0ach0idnffq" path="res://static-backgrounds/Graphics Asset - Spaceships/SVG/Spaceships/01/Spaceship_01_BLUE.svg" id="2_k6te7"]
+[ext_resource type="PackedScene" uid="uid://siaila4rsrgp" path="res://Entities/player.tscn" id="2_nsest"]
 
 [node name="Main_Scene" type="Node2D"]
 
@@ -12,7 +12,5 @@ position = Vector2(658, 403)
 scale = Vector2(1.2959, 1.2959)
 texture = ExtResource("1_qk6nt")
 
-[node name="Spaceship01Blue" type="Sprite2D" parent="."]
-position = Vector2(516, 622)
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("2_k6te7")
+[node name="Player" parent="." instance=ExtResource("2_nsest")]
+position = Vector2(611, 667)
