@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cxythsi0hthrn"]
+
+[ext_resource type="Shader" path="res://Levels/space_nebulus.gdshader" id="1_rciin"]
+
+[resource]
+shader = ExtResource("1_rciin")
