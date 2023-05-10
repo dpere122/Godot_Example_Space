@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc5wo3wudlcc"]
+
+[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="1_74il0"]
+[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="2_5rl7f"]
+
+[sub_resource type="GDScript" id="GDScript_vdqaj"]
+resource_name = "projectile"
+script/source = "extends Node2D
+
+@export var weapon_name:String
+@export var damage:float
+@export var speed:float
+#this var will only be used to get passed down into the ship
+@export var cooldown:float
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func _physics_process(delta):
+	position.y -= speed *delta
+	
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ceuhs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_74il0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5rl7f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq2ce"]
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_vdqaj")
+weapon_name = "Basic_shot"
+damage = 10.0
+speed = 1000.0
+cooldown = 0.05
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ceuhs")
+autoplay = "default"
+frame_progress = 0.471741
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -4.16329e-12)
+scale = Vector2(1.72, 4.156)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+shape = SubResource("CircleShape2D_jq2ce")
