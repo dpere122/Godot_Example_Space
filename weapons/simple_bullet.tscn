@@ -55,7 +55,7 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ceuhs")
 autoplay = "default"
-frame_progress = 0.0155963
+frame_progress = 0.695286
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]

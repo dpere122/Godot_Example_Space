@@ -15,12 +15,18 @@ run/main_scene="res://Levels/main_scene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/initial_position_type=0
 window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

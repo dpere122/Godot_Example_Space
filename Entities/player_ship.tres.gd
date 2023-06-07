@@ -34,6 +34,7 @@ func shootMainGun()-> Node2D:
 	#Each weapon/bullet type needs to have it's own cooldown
 	var bullet_scene: PackedScene = load("res://weapons/simple_bullet.tscn")
 	var bullet_node: Node2D = bullet_scene.instantiate()
+	$"shoot_sound".play();
 	bullet_node.position = position
 	get_parent().add_child(bullet_node)
 	return bullet_node

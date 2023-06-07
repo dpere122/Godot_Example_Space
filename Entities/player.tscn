@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5o6ps0a1tr3q"]
+[gd_scene load_steps=8 format=3 uid="uid://b5o6ps0a1tr3q"]
 
 [ext_resource type="Script" path="res://Entities/player_ship.tres.gd" id="1_o2njf"]
 [ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
+[ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="5_cjeqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
 size = Vector2(68, 56)
@@ -56,3 +57,6 @@ frame_progress = 0.474615
 
 [node name="shoot_timer" type="Timer" parent="CharacterBody2D"]
 one_shot = true
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("5_cjeqn")

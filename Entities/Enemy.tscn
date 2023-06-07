@@ -22,10 +22,11 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Enemy" type="Node2D"]
 rotation = 3.14159
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 0
 motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
