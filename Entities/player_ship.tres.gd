@@ -12,7 +12,7 @@ func _physics_process(delta):
 	#Here i need to spawn a bullet.
 	#the bullet then has to travel towards the enemies ahead.
 	if Input.is_action_just_released("ui_shoot"):
-		var bullet_instance : Node2D = shootMainGun()	
+		var bullet_instance : Node2D = shootMainGun()
 #		if $shoot_timer.time_left <= 0:
 #			#Here I need to spawn a bullet
 #			#then use the parent function 

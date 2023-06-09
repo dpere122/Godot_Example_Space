@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_i7xqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
-size = Vector2(83, 62)
+size = Vector2(95.0002, 89.9998)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uk1d"]
 animations = [{
@@ -34,14 +34,14 @@ script = ExtResource("1_ut3f3")
 
 [node name="Collision_Box" type="CollisionShape2D" parent="CharacterBody2D"]
 z_index = 2
-position = Vector2(0.499998, -4.37112e-08)
+position = Vector2(0.49998, 8)
 shape = SubResource("RectangleShape2D_12gyc")
 
 [node name="Space_Ship" type="Sprite2D" parent="CharacterBody2D"]
 z_index = 1
 z_as_relative = false
 position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(0.22, 0.22)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ykd8j")
 
 [node name="Left_Thrust" type="AnimatedSprite2D" parent="CharacterBody2D/Space_Ship"]

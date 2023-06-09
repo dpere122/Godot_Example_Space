@@ -55,8 +55,5 @@ sprite_frames = SubResource("SpriteFrames_4uk1d")
 autoplay = "default"
 frame_progress = 0.474615
 
-[node name="shoot_timer" type="Timer" parent="CharacterBody2D"]
-one_shot = true
-
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 stream = ExtResource("5_cjeqn")
