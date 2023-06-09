@@ -8,6 +8,7 @@ resource_name = "projectile"
 script/source = "extends Node2D
 
 var isPlayer:bool
+var canvasRect:Rect2
 @export var weapon_name:String
 @export var damage:float
 @export var speed:float
@@ -16,7 +17,7 @@ var isPlayer:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	canvasRect = get_viewport_rect()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +25,13 @@ func _process(delta):
 	pass
 	
 func _physics_process(delta):
+	#destroy object if it goes past the screen
+	if(global_transform.origin.y >= canvasRect.size.y/2):
+		queue_free()
+	elif(global_transform.origin.y <= -canvasRect.size.y/2):
+		queue_free()
+		
+				
 	position.y -= speed *delta
 	
 
@@ -31,10 +39,13 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body) -> void:
 	if(isPlayer and body.entity_type == \"Enemy\"):
 		body.health -= damage
-		print(\"hit Enemy\")		
+		print(body.name,\":\",body.health)
+		if(body.health <= 0):
+			body.destroyed()
 	elif(!isPlayer and body.entity_type == \"Player\"):
 		body.health -= damage
-		print(\"hit Player\")
+		if(body.health <= 0):
+			body.destroyed()
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ceuhs"]
@@ -48,7 +59,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq2ce"]

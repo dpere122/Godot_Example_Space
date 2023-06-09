@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dja33fvx0lthn"]
+
+[ext_resource type="Texture2D" uid="uid://ixrtmalfpbjx" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Explosion.png" id="1_mrvb3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sktp"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxsrl"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x88i0"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55uh1"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dlfw"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l4qr"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hagdr"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn8cb"]
+atlas = ExtResource("1_mrvb3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nuuio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sktp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxsrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x88i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55uh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dlfw")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_8l4qr")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_hagdr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rn8cb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Explosion" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nuuio")
+autoplay = "default"

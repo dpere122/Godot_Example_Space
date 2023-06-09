@@ -49,3 +49,10 @@ func shootMainGun()-> Node2D:
 	return bullet_node
 	
 
+func destroyed() -> void:
+	#this function will be called by the bullet that causes hp to go below 0
+	var explosion: PackedScene = load("res://static_entity/explosion.tscn")
+	var explosion_node: Node2D = explosion.instantiate()
+	explosion_node.position = get_global_transform().origin
+	get_node("/root").add_child(explosion_node)
+	queue_free()
