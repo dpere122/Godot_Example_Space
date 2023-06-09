@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+@export var SPEED = 300.0
+@export var entity_type = "Enemy"
+@export var health = 100
 
 var canvasRect:Rect2
 var direction: float = 1
-@export var entity_type = "Enemy"
-@export var health = 100
 
 func _ready():
 	canvasRect = get_viewport_rect()

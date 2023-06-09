@@ -11,8 +11,6 @@ load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8c
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="_level_Manager" type="Node2D" parent="."]
-
 [node name="Background" type="Sprite2D" parent="."]
 material = ExtResource("1_3fbn8")
 scale = Vector2(2.7, 2.7)

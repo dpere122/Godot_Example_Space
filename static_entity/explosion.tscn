@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dja33fvx0lthn"]
+[gd_scene load_steps=12 format=3 uid="uid://dja33fvx0lthn"]
 
 [ext_resource type="Texture2D" uid="uid://ixrtmalfpbjx" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Explosion.png" id="1_mrvb3"]
+[ext_resource type="Script" path="res://static_entity/explosion.gd" id="1_p2j7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sktp"]
 atlas = ExtResource("1_mrvb3")
@@ -68,7 +69,10 @@ animations = [{
 
 [node name="Explosion" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_p2j7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nuuio")
 autoplay = "default"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
