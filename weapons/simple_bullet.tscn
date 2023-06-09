@@ -7,6 +7,7 @@
 resource_name = "projectile"
 script/source = "extends Node2D
 
+var isPlayer:bool
 @export var weapon_name:String
 @export var damage:float
 @export var speed:float
@@ -25,6 +26,15 @@ func _process(delta):
 func _physics_process(delta):
 	position.y -= speed *delta
 	
+
+#if bullet hits object then do damage to it as long as it's either an enemy or player
+func _on_area_2d_body_entered(body) -> void:
+	if(isPlayer and body.entity_type == \"Enemy\"):
+		body.health -= damage
+		print(\"hit Enemy\")		
+	elif(!isPlayer and body.entity_type == \"Player\"):
+		body.health -= damage
+		print(\"hit Player\")
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ceuhs"]
@@ -64,3 +74,5 @@ scale = Vector2(1.72, 4.156)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("CircleShape2D_jq2ce")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

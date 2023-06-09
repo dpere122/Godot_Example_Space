@@ -5,6 +5,8 @@ const SPEED = 300.0
 
 var canvasRect:Rect2
 var direction: float = 1
+@export var entity_type = "Enemy"
+@export var health = 100
 
 func _ready():
 	canvasRect = get_viewport_rect()
@@ -40,6 +42,8 @@ func shootMainGun()-> Node2D:
 	#Each weapon/bullet type needs to have it's own cooldown
 	var bullet_scene: PackedScene = load("res://weapons/simple_bullet.tscn")
 	var bullet_node: Node2D = bullet_scene.instantiate()
+	bullet_node.isPlayer = false
+	bullet_node.damage = 10
 	bullet_node.position = position
 	get_parent().add_child(bullet_node)
 	return bullet_node

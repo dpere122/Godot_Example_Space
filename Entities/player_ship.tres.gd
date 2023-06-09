@@ -2,10 +2,9 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var entity_type = "Player"
+@export var health = 100
 
 
 func _physics_process(delta):
@@ -34,6 +33,7 @@ func shootMainGun()-> Node2D:
 	#Each weapon/bullet type needs to have it's own cooldown
 	var bullet_scene: PackedScene = load("res://weapons/simple_bullet.tscn")
 	var bullet_node: Node2D = bullet_scene.instantiate()
+	bullet_node.isPlayer = true
 	$"shoot_sound".play();
 	bullet_node.position = position
 	get_parent().add_child(bullet_node)
