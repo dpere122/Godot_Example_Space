@@ -23,7 +23,7 @@ func _physics_process(delta):
 	#Here i need to spawn a bullet.
 	#the bullet then has to travel towards the enemies ahead.	
 	if $shoot_timer.time_left <= 0:
-		var bullet_instance : Node2D = shootMainGun()	
+		shootMainGun()	
 		#Here I need to spawn a bullet
 		#then use the parent function 
 		$shoot_timer.start(curRand)

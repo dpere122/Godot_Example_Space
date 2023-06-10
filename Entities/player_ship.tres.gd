@@ -54,7 +54,6 @@ func destroyed() -> void:
 
 func _on_area_2d_area_entered(area):
 	var curCollide = area.owner
-	print(curCollide.name)
 	if(curCollide.name == "Simple_bullet" and !curCollide.isPlayer):
 		health -= curCollide.damage
 		flash()
