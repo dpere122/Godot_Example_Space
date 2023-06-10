@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbhpqtvi2wyjl"]
+[gd_scene load_steps=9 format=3 uid="uid://dbhpqtvi2wyjl"]
 
 [ext_resource type="Script" path="res://Entities/enemy_ship.tres.gd" id="1_ut3f3"]
+[ext_resource type="Material" uid="uid://fwy1yijolthn" path="res://Flashing_material.tres" id="2_6sp47"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_7rig7"]
 [ext_resource type="Texture2D" uid="uid://ddfxe62w61kp5" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/02/Spaceship_02_RED.png" id="2_ykd8j"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_i7xqu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
-size = Vector2(95.0002, 89.9998)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uk1d"]
 animations = [{
@@ -22,6 +20,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
+size = Vector2(86, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lis2x"]
+size = Vector2(94.9998, 90.0002)
+
 [node name="Enemy" type="Node2D"]
 rotation = 3.14159
 
@@ -32,15 +36,10 @@ floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_ut3f3")
 
-[node name="Collision_Box" type="CollisionShape2D" parent="CharacterBody2D"]
-z_index = 2
-position = Vector2(0.49998, 8)
-shape = SubResource("RectangleShape2D_12gyc")
-
 [node name="Space_Ship" type="Sprite2D" parent="CharacterBody2D"]
 z_index = 1
 z_as_relative = false
-position = Vector2(2.08165e-12, 2.08165e-12)
+material = ExtResource("2_6sp47")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ykd8j")
 
@@ -59,3 +58,22 @@ frame_progress = 0.474615
 
 [node name="shoot_timer" type="Timer" parent="CharacterBody2D"]
 one_shot = true
+
+[node name="Collision_Box" type="CollisionShape2D" parent="CharacterBody2D"]
+z_index = 2
+position = Vector2(0.999947, 21)
+shape = SubResource("RectangleShape2D_12gyc")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hitbox" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.999977, 9)
+shape = SubResource("RectangleShape2D_lis2x")
+
+[node name="eff_timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.09
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CharacterBody2D/eff_timer" to="CharacterBody2D" method="_on_eff_timer_timeout"]

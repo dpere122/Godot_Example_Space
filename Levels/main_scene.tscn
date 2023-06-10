@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bog2yfsesy5un"]
+[gd_scene load_steps=7 format=3 uid="uid://bog2yfsesy5un"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
 [ext_resource type="PackedScene" uid="uid://b5o6ps0a1tr3q" path="res://Entities/player.tscn" id="2_nsest"]
@@ -6,6 +6,18 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftl1i"]
 load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8cd849d59e302b2e7db3.ctex"
+
+[sub_resource type="Shader" id="Shader_sihv6"]
+code = "shader_type canvas_item;
+
+uniform float intensity = 0.05f;
+uniform float layers = 5f;
+uniform float speed = 4f;
+
+ "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhpwt"]
+shader = SubResource("Shader_sihv6")
 
 [node name="Main_Scene" type="Node2D"]
 
@@ -21,13 +33,40 @@ position = Vector2(0, 422)
 scale = Vector2(1.68, 1.68)
 
 [node name="Enemy_v1" parent="." instance=ExtResource("3_gqba5")]
+material = SubResource("ShaderMaterial_mhpwt")
 position = Vector2(-631, -460)
 
 [node name="Enemy_v2" parent="." instance=ExtResource("3_gqba5")]
 position = Vector2(-511, -459)
 
 [node name="Enemy_v3" parent="." instance=ExtResource("3_gqba5")]
-position = Vector2(-388, -460)
+position = Vector2(-406, -460)
 
 [node name="Enemy_v4" parent="." instance=ExtResource("3_gqba5")]
-position = Vector2(-284, -461)
+position = Vector2(-302, -461)
+
+[node name="Enemy_v5" parent="." instance=ExtResource("3_gqba5")]
+material = SubResource("ShaderMaterial_mhpwt")
+position = Vector2(-200, -462)
+
+[node name="Enemy_v6" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(-80, -461)
+
+[node name="Enemy_v7" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(25, -462)
+
+[node name="Enemy_v8" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(129, -463)
+
+[node name="Enemy_v9" parent="." instance=ExtResource("3_gqba5")]
+material = SubResource("ShaderMaterial_mhpwt")
+position = Vector2(240, -464)
+
+[node name="Enemy_v10" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(360, -463)
+
+[node name="Enemy_v11" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(465, -464)
+
+[node name="Enemy_v12" parent="." instance=ExtResource("3_gqba5")]
+position = Vector2(569, -465)

@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5o6ps0a1tr3q"]
+[gd_scene load_steps=10 format=3 uid="uid://b5o6ps0a1tr3q"]
 
 [ext_resource type="Script" path="res://Entities/player_ship.tres.gd" id="1_o2njf"]
 [ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
+[ext_resource type="Material" uid="uid://fwy1yijolthn" path="res://Flashing_material.tres" id="2_ps151"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
 [ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="5_cjeqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
-size = Vector2(68, 56)
+size = Vector2(64, 52)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4uk1d"]
 animations = [{
@@ -22,6 +23,9 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hax6g"]
+size = Vector2(68, 56)
 
 [node name="Player" type="Node2D"]
 
@@ -39,6 +43,7 @@ shape = SubResource("RectangleShape2D_12gyc")
 [node name="Space_Ship" type="Sprite2D" parent="CharacterBody2D"]
 z_index = 1
 z_as_relative = false
+material = ExtResource("2_ps151")
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("1_u0k34")
@@ -58,3 +63,17 @@ frame_progress = 0.474615
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 stream = ExtResource("5_cjeqn")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hitbox" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(4.76837e-07, 9.53674e-07)
+shape = SubResource("RectangleShape2D_hax6g")
+
+[node name="eff_timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.07
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="CharacterBody2D/eff_timer" to="CharacterBody2D" method="_on_eff_timer_timeout"]
