@@ -14,19 +14,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $Timer.time_left <= 0:
-		print("tick")
 		spawn_ship()
 
 func spawn_ship() -> void:
-	if(current_spawned >= levels[current_level]):
-		print("NEW_WAVE")		
-		current_cooldown -= 0.5
-		current_level += 1
-		current_spawned = 0
-	else:
-		var ship_node: PackedScene = load("res://Entities/Enemy.tscn")
-		var ship: Node2D = ship_node.instantiate()
-		ship.position = get_global_transform().origin
-		get_node("/root").add_child(ship)
-		current_spawned += 1
-	$Timer.start(current_cooldown)
+	if(current_level < levels[current_level]):
+		if(current_spawned >= levels[current_level]):
+			print("NEW_WAVE")		
+			current_cooldown -= 0.5
+			current_level += 1
+			current_spawned = 0
+		else:
+			var ship_node: PackedScene = load("res://Entities/Enemy.tscn")
+			var ship: Node2D = ship_node.instantiate()
+			ship.position = get_global_transform().origin
+			get_node("/root").get_child(0).add_child(ship)
+			current_spawned += 1
+		$Timer.start(current_cooldown)

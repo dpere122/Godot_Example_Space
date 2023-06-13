@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="1_74il0"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="2_5rl7f"]
+[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/Entity/Hitbox_component.tscn" id="3_5qcxo"]
 
 [sub_resource type="GDScript" id="GDScript_vdqaj"]
 resource_name = "projectile"
@@ -31,8 +32,10 @@ func _physics_process(delta):
 	elif(global_transform.origin.y <= -canvasRect.size.y/2):
 		queue_free()
 		
-				
-	position.y -= speed *delta
+	if(isPlayer):
+		position.y -= speed *delta
+	else:
+		position.y += speed *delta
 	
 
 #if bullet hits object then do damage to it as long as it's either an enemy or player
@@ -46,6 +49,7 @@ func _physics_process(delta):
 #		body.health -= damage
 #		if(body.health <= 0):
 #			body.destroyed()
+
 
 "
 
@@ -63,8 +67,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jq2ce"]
-
 [node name="Simple_bullet" type="Node2D"]
 script = SubResource("GDScript_vdqaj")
 weapon_name = "Basic_shot"
@@ -79,11 +81,5 @@ autoplay = "default"
 frame_progress = 0.695286
 metadata/_edit_group_ = true
 
-[node name="bullet_collisions" type="Area2D" parent="AnimatedSprite2D"]
-position = Vector2(0, -4.16329e-12)
-scale = Vector2(1.72, 4.156)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/bullet_collisions"]
-shape = SubResource("CircleShape2D_jq2ce")
+[node name="Node2D" parent="." instance=ExtResource("3_5qcxo")]
+scale = Vector2(1.04255, 1.55312)

@@ -1,7 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b5o6ps0a1tr3q"]
 
-[ext_resource type="Script" path="res://Entities/player_ship.tres.gd" id="1_o2njf"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_5ihbb"]
 [ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
+[ext_resource type="PackedScene" uid="uid://476rhqfba8lf" path="res://Components/Entity/Hurtbox_component.tscn" id="2_8gqq3"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
 [ext_resource type="Material" uid="uid://fwy1yijolthn" path="res://Flashing_material.tres" id="2_ps151"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
@@ -24,23 +25,19 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hax6g"]
-size = Vector2(68, 56)
-
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
-script = ExtResource("1_o2njf")
-SPEED = 500.0
+script = ExtResource("1_5ihbb")
 
-[node name="Collision_Box" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Hurtbox" parent="." instance=ExtResource("2_8gqq3")]
+
+[node name="Collision_Box" type="CollisionShape2D" parent="."]
 z_index = 2
 shape = SubResource("RectangleShape2D_12gyc")
 
-[node name="Space_Ship" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Space_Ship" type="Sprite2D" parent="."]
 z_index = 1
 z_as_relative = false
 material = ExtResource("2_ps151")
@@ -48,32 +45,24 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("1_u0k34")
 
-[node name="Left_Thrust" type="AnimatedSprite2D" parent="CharacterBody2D/Space_Ship"]
+[node name="Left_Thrust" type="AnimatedSprite2D" parent="Space_Ship"]
 z_as_relative = false
 position = Vector2(-127.273, 150)
 sprite_frames = SubResource("SpriteFrames_4uk1d")
 autoplay = "default"
 
-[node name="Right_Thrust" type="AnimatedSprite2D" parent="CharacterBody2D/Space_Ship"]
+[node name="Right_Thrust" type="AnimatedSprite2D" parent="Space_Ship"]
 z_as_relative = false
 position = Vector2(131.818, 154.545)
 sprite_frames = SubResource("SpriteFrames_4uk1d")
 autoplay = "default"
 frame_progress = 0.474615
 
-[node name="shoot_sound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cjeqn")
+volume_db = -20.392
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 4
-
-[node name="hitbox" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-position = Vector2(4.76837e-07, 9.53674e-07)
-shape = SubResource("RectangleShape2D_hax6g")
-
-[node name="eff_timer" type="Timer" parent="CharacterBody2D"]
+[node name="eff_timer" type="Timer" parent="."]
 wait_time = 0.07
 
-[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="CharacterBody2D/eff_timer" to="CharacterBody2D" method="_on_eff_timer_timeout"]
+[connection signal="timeout" from="eff_timer" to="." method="_on_eff_timer_timeout"]

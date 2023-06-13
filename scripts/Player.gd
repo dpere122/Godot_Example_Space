@@ -52,14 +52,11 @@ func destroyed() -> void:
 	get_node("/root").add_child(explosion_node)
 	queue_free()
 
-func _on_area_2d_area_entered(area):
-	var curCollide = area.owner
-	if(curCollide.name == "Simple_bullet" and !curCollide.isPlayer):
-		health -= curCollide.damage
-		flash()
-		curCollide.queue_free()
-		if(health <= 0):
-			destroyed()
+func take_damage(amount: int) -> void:
+	health -= amount
+	flash()
+	if(health <= 0):
+		destroyed()
 
 func _on_eff_timer_timeout():
 	$Space_Ship.material.set_shader_parameter("flash_mod",0)

@@ -16,8 +16,7 @@ func _ready():
 	canvasRect = get_viewport_rect()
 	curRand = rng.randf_range(1, 5)
 	$shoot_timer.start(curRand)
-	
-	
+
 
 func _physics_process(delta):
 	#Here i need to spawn a bullet.
@@ -30,10 +29,10 @@ func _physics_process(delta):
 
 	if(global_transform.origin.x >= canvasRect.size.x/2):
 		direction = -1
-		position.y -= ($Space_Ship.get_rect().size.y*$Space_Ship.scale.y)
+		position.y += ($Space_Ship.get_rect().size.y*$Space_Ship.scale.y)
 	elif(global_transform.origin.x <= -1*(canvasRect.size.x/2)):
 		direction = 1
-		position.y -= ($Space_Ship.get_rect().size.y*$Space_Ship.scale.y)
+		position.y += ($Space_Ship.get_rect().size.y*$Space_Ship.scale.y)
 		
 	if direction != 0:
 		velocity.x = direction * SPEED
@@ -63,19 +62,17 @@ func destroyed() -> void:
 	var explosion: PackedScene = load("res://static_entity/explosion.tscn")
 	var explosion_node: Node2D = explosion.instantiate()
 	explosion_node.position = get_global_transform().origin
-	get_node("/root").add_child(explosion_node)
+	get_node("/root").get_child(0).add_child(explosion_node)
 	queue_free()
-
-
-func _on_area_2d_area_entered(area):
-	var curCollide = area.owner
-	if(curCollide.name == "Simple_bullet" and curCollide.isPlayer):
-		health -= curCollide.damage
-		curCollide.queue_free()
-		flash()
-		if(health <= 0):
-			destroyed()
-
 
 func _on_eff_timer_timeout():
 	$Space_Ship.material.set_shader_parameter("flash_mod",0)
+
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	flash()
+	if(health <= 0):
+		destroyed()
+
+
