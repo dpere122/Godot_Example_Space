@@ -3,12 +3,12 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 @export var levels: Array = [10,12,15]
 var current_spawned:int = 0
-var current_cooldown:float = 2
+var current_cooldown:float = 0.5
 var current_level:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start(-current_cooldown)
+	$Timer.start(-(current_cooldown/2))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +17,7 @@ func _process(delta):
 		spawn_ship()
 
 func spawn_ship() -> void:
-	if(current_level < levels[current_level]):
+	if(current_level < levels.size()):
 		if(current_spawned >= levels[current_level]):
 			print("NEW_WAVE")		
 			current_cooldown -= 0.5

@@ -4,7 +4,7 @@ extends Area2D
 
 func _init() -> void:
 	collision_layer = 0
-	collision_mask = 2	
+	collision_mask = 2
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():

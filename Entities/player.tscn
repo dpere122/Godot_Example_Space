@@ -30,6 +30,7 @@ motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_5ihbb")
+SPEED = 500.0
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_8gqq3")]
 
