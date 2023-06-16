@@ -9,12 +9,13 @@ load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8c
 
 [node name="Main_Scene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Background" type="Sprite2D" parent="."]
 material = ExtResource("1_3fbn8")
-scale = Vector2(2.7, 2.7)
+position = Vector2(5.99997, -110.35)
+scale = Vector2(1.87695, 1.51631)
 texture = SubResource("CompressedTexture2D_ftl1i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_nsest")]
 position = Vector2(0, 422)

@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://n6hy1m2pdolp"]
+[gd_scene load_steps=4 format=3 uid="uid://n6hy1m2pdolp"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_ijbhq"]
+[ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_r8k5r"]
+[ext_resource type="Texture2D" uid="uid://cwhmps2lfns1w" path="res://static-backgrounds/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="2_t4wpj"]
 
-[node name="Control" type="Control"]
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_r8k5r")
+position = Vector2(943, 424)
+scale = Vector2(2.01552, 2.01552)
+texture = ExtResource("2_t4wpj")
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,31 +21,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ijbhq")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
-offset_left = 851.0
-offset_top = 400.0
-offset_right = 1050.0
-offset_bottom = 639.0
+offset_left = 564.0
+offset_top = 336.0
+offset_right = 1360.0
+offset_bottom = 714.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Space Frigate" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Space Frigates v1"
+
+[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Play" to="Control" method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Options" to="Control" method="_on_options_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="Control" method="_on_exit_pressed"]

@@ -5,6 +5,6 @@ void fragment() {
 }
 
 void vertex() {
-	VERTEX.x += cos(TIME + VERTEX.x + VERTEX.y) * 3.0;
-	VERTEX.y += sin(TIME + VERTEX.x + VERTEX.y) * 1.5;
+	VERTEX.x += cos(TIME*0.08 + VERTEX.x + VERTEX.y) * 10.0;
+	VERTEX.y += sin(TIME*0.08 + VERTEX.x + VERTEX.y) * 10.0;
 }
