@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var entity_type : String = "Enemy"
 @export var health : float = 100
 @export var damage : int = 15
+@export var weapon_filter : Color = Color(0,0,0,0)
 
 var rng = RandomNumberGenerator.new()
 var curRand
@@ -50,6 +51,7 @@ func shootMainGun()-> Node2D:
 	bullet_node.isPlayer = false
 	bullet_node.damage = damage
 	bullet_node.position = position
+	bullet_node._set_texture_filter(weapon_filter)
 	get_parent().add_child(bullet_node)
 	return bullet_node
 	

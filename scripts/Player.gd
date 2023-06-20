@@ -6,6 +6,11 @@ extends CharacterBody2D
 @export var entity_type = "Player"
 @export var health : float = 100
 @export var damage : int = 50
+@export var weapon_filter : Color = Color(0,0,0,0)
+
+func _input(event)->void:
+	if(event.is_action_pressed("ui_console")):
+		toggle_pause()
 
 func _physics_process(delta):
 	#Here i need to spawn a bullet.
@@ -35,6 +40,7 @@ func shootMainGun()-> Node2D:
 	var bullet_node: Node2D = bullet_scene.instantiate()
 	bullet_node.damage = damage
 	bullet_node.isPlayer = true
+	bullet_node._set_texture_filter(weapon_filter)
 	$"shoot_sound".play();
 	bullet_node.position = position
 	get_parent().add_child(bullet_node)
@@ -58,5 +64,14 @@ func take_damage(amount: int) -> void:
 	if(health <= 0):
 		destroyed()
 
-func _on_eff_timer_timeout():
+func _on_eff_timer_timeout()-> void:
 	$Space_Ship.material.set_shader_parameter("flash_mod",0)
+
+func toggle_pause() -> void:
+	if(!get_tree().paused):
+		get_tree().paused = true
+		print(get_tree().paused)
+	else:
+		get_tree().paused = false
+		print(get_tree().paused)
+	pass

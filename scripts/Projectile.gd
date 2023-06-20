@@ -14,7 +14,8 @@ func _ready():
 	if(!isPlayer):
 		rotation_degrees = 180
 
-
+func _set_texture_filter(color:Color) -> void:
+	$AnimatedSprite2D.material.set_shader_parameter("Color_Filter",color)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

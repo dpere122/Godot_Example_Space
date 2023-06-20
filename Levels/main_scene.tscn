@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bog2yfsesy5un"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
-[ext_resource type="PackedScene" uid="uid://b5o6ps0a1tr3q" path="res://Entities/player.tscn" id="2_nsest"]
+[ext_resource type="PackedScene" uid="uid://cec3xrh6hcddf" path="res://Entities/player.tscn" id="2_nsest"]
 [ext_resource type="PackedScene" uid="uid://bf4kkd5cwre6d" path="res://Levels/ship_spawner.tscn" id="3_blgds"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftl1i"]
@@ -11,8 +11,8 @@ load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8c
 
 [node name="Background" type="Sprite2D" parent="."]
 material = ExtResource("1_3fbn8")
-position = Vector2(5.99997, -110.35)
-scale = Vector2(1.87695, 1.51631)
+position = Vector2(-9, -110)
+scale = Vector2(1.99695, 1.51631)
 texture = SubResource("CompressedTexture2D_ftl1i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -20,6 +20,7 @@ texture = SubResource("CompressedTexture2D_ftl1i")
 [node name="Player" parent="." instance=ExtResource("2_nsest")]
 position = Vector2(0, 422)
 scale = Vector2(1.68, 1.68)
+weapon_filter = Color(0.8, 0.137255, 0.521569, 1)
 
 [node name="Ship_Spawner" parent="." instance=ExtResource("3_blgds")]
-position = Vector2(-733, -454)
+position = Vector2(-878, -454)

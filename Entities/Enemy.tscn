@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://3x700x7u4677"]
+[gd_scene load_steps=9 format=3 uid="uid://bcfmyjx6lvdfm"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_p1pyv"]
-[ext_resource type="Material" uid="uid://fwy1yijolthn" path="res://Flashing_material.tres" id="2_6sp47"]
+[ext_resource type="Material" uid="uid://c0ccpdud3ipe7" path="res://material-shaders/Flashing_material.tres" id="2_6sp47"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_7rig7"]
 [ext_resource type="Texture2D" uid="uid://ddfxe62w61kp5" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/02/Spaceship_02_RED.png" id="2_ykd8j"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_i7xqu"]
@@ -30,6 +30,7 @@ motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_p1pyv")
+weapon_filter = Color(0.568627, 0.00784314, 0, 0.447059)
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_2n3d5")]
 scale = Vector2(5, 2.96)

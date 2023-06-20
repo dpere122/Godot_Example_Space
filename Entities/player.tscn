@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5o6ps0a1tr3q"]
+[gd_scene load_steps=10 format=3 uid="uid://cec3xrh6hcddf"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_5ihbb"]
 [ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
 [ext_resource type="PackedScene" uid="uid://476rhqfba8lf" path="res://Components/Entity/Hurtbox_component.tscn" id="2_8gqq3"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
-[ext_resource type="Material" uid="uid://fwy1yijolthn" path="res://Flashing_material.tres" id="2_ps151"]
+[ext_resource type="Material" uid="uid://c0ccpdud3ipe7" path="res://material-shaders/Flashing_material.tres" id="2_ps151"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
 [ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="5_cjeqn"]
 
@@ -31,6 +31,7 @@ floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_5ihbb")
 SPEED = 500.0
+weapon_filter = Color(0, 0.396078, 0.596078, 0.560784)
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_8gqq3")]
 
