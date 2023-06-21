@@ -34,6 +34,6 @@ autoplay = "default"
 frame_progress = 0.695286
 metadata/_edit_group_ = true
 
-[node name="HurtBox" parent="." instance=ExtResource("3_5qcxo")]
+[node name="HitBox" parent="." instance=ExtResource("3_5qcxo")]
 visible = false
 scale = Vector2(1.04255, 1.55312)

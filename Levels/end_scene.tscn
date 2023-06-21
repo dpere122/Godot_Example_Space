@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdo2n1kkfo3xu"]
+
+[ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_lbifv"]
+[ext_resource type="Texture2D" uid="uid://cwhmps2lfns1w" path="res://static-backgrounds/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="2_8304t"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="3_t2tg7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_lbifv")
+position = Vector2(943, 424)
+scale = Vector2(2.01552, 2.01552)
+texture = ExtResource("2_8304t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_t2tg7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 336.0
+offset_right = 1360.0
+offset_bottom = 714.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Thanks for playing!"
+
+[node name="Restart" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart Game"
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Restart" to="Control" method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="Control" method="_on_exit_pressed"]

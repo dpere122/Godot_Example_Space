@@ -5,6 +5,6 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_xva3j")
-shader_parameter/Color_Filter = Color(0.0196078, 0.4, 0.454902, 1)
+shader_parameter/Color_Filter = Color(0, 0.317647, 0.282353, 1)
 shader_parameter/Blur_Direction = Vector2(1, 0)
 shader_parameter/Blur_Amount = 0.01

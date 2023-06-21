@@ -56,6 +56,7 @@ func destroyed() -> void:
 	var explosion_node: Node2D = explosion.instantiate()
 	explosion_node.position = get_global_transform().origin
 	get_node("/root").add_child(explosion_node)
+	get_tree().change_scene_to_file("res://Levels/end_scene.tscn")
 	queue_free()
 
 func take_damage(amount: int) -> void:
@@ -74,4 +75,3 @@ func toggle_pause() -> void:
 	else:
 		get_tree().paused = false
 		print(get_tree().paused)
-	pass

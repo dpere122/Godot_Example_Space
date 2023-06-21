@@ -7,7 +7,7 @@ void fragment()
 {
     // set color filter
     COLOR = texture(TEXTURE, UV) *Color_Filter;
-    for(int i = -7; i <=7; i++) {
-		COLOR += texture(TEXTURE, UV + Blur_Direction * float(i)  * Blur_Amount) / 11.0;
-    }
+//    for(int i = -5; i <=5; i++) {
+//		COLOR += texture(TEXTURE, UV + Blur_Direction * float(i)  * Blur_Amount) / 11.0;
+//    }
 }

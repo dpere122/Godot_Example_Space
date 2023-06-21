@@ -30,7 +30,7 @@ motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_p1pyv")
-weapon_filter = Color(0.568627, 0.00784314, 0, 0.447059)
+weapon_filter = Color(1, 0.129412, 0.364706, 1)
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_2n3d5")]
 scale = Vector2(5, 2.96)
