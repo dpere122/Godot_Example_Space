@@ -32,9 +32,11 @@ floor_stop_on_slope = false
 platform_on_leave = 2
 script = ExtResource("1_5ihbb")
 SPEED = 500.0
+health = 40.0
 weapon_filter = Color(0, 0.317647, 0.282353, 1)
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_8gqq3")]
+scale = Vector2(3.16, 1.96)
 
 [node name="Collision_Box" type="CollisionShape2D" parent="."]
 z_index = 2
