@@ -64,7 +64,13 @@ func destroyed() -> void:
 	var explosion: PackedScene = load("res://static_entity/explosion.tscn")
 	var explosion_node: Node2D = explosion.instantiate()
 	explosion_node.position = get_global_transform().origin
-	$Space_Ship.queue_free()	
+	$Space_Ship.queue_free()
+	$Hurtbox.queue_free()
+	
+	
+	
+	
+	
 	get_node("/root").add_child(explosion_node)
 	
 	var t = Timer.new()

@@ -32,5 +32,13 @@ func spawn_ship() -> void:
 			current_spawned += 1
 		$Timer.start(current_cooldown)
 	elif(live_ships == 0):
+		var t = Timer.new()
+		t.set_wait_time(3)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		await t.timeout
+		t.queue_free()
+		
 		get_tree().change_scene_to_file("res://Levels/end_scene.tscn")
 
