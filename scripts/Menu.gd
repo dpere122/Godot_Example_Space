@@ -8,7 +8,9 @@ func _on_play_pressed():
 
 
 func _on_options_pressed():
-	pass # Replace with function body.
+	owner.get_node("Options").show()
+	hide()
+	
 
 
 func _on_exit_pressed():

@@ -65,7 +65,6 @@ frame_progress = 0.474615
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cjeqn")
-volume_db = -20.392
 
 [node name="eff_timer" type="Timer" parent="."]
 wait_time = 0.07

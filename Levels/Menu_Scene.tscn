@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://n6hy1m2pdolp"]
+[gd_scene load_steps=9 format=3 uid="uid://bxpcwoa0j61t1"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_ijbhq"]
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_r8k5r"]
 [ext_resource type="Texture2D" uid="uid://cwhmps2lfns1w" path="res://static-backgrounds/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="2_t4wpj"]
+[ext_resource type="Theme" uid="uid://d1f13mtna64lj" path="res://Levels/gui_themes/Main_Menu_theme.theme" id="4_jcfm6"]
+[ext_resource type="Script" path="res://scripts/Options_Menu.gd" id="4_srkm6"]
+[ext_resource type="Script" path="res://scripts/Audio_Settings.gd" id="5_yede2"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Theme" id="Theme_vqbdi"]
+
+[sub_resource type="Theme" id="Theme_xreha"]
+default_font_size = 200
+
+[node name="GUI_BASE" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("1_r8k5r")
@@ -12,7 +20,7 @@ position = Vector2(943, 424)
 scale = Vector2(2.01552, 2.01552)
 texture = ExtResource("2_t4wpj")
 
-[node name="Control" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,36 +29,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ijbhq")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
 layout_mode = 0
 offset_left = 564.0
 offset_top = 336.0
 offset_right = 1360.0
 offset_bottom = 714.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
 layout_mode = 2
 
-[node name="Space Frigate" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Space Frigate" type="Label" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "Space Frigates v1"
 
-[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
-[node name="Options" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options"
 
-[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Play" to="Control" method="_on_play_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Options" to="Control" method="_on_options_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="Control" method="_on_exit_pressed"]
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 667.0
+offset_top = 219.0
+offset_right = 707.0
+offset_bottom = 259.0
+script = ExtResource("4_srkm6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vqbdi")
+
+[node name="Title" type="Label" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_jcfm6")
+text = "Audio"
+
+[node name="Master_Audio" type="HSlider" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Master Audio Control"
+theme = SubResource("Theme_xreha")
+max_value = 1.0
+step = 0.001
+script = ExtResource("5_yede2")
+bus_name = "Master"
+
+[node name="Accept" type="Button" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xreha")
+theme_override_font_sizes/font_size = 72
+text = "Accept"
+
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Play" to="MainMenu" method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Options" to="MainMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Exit" to="MainMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Accept" to="Options" method="_on_accept_pressed"]
