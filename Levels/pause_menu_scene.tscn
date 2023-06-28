@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://duadrtslckb30"]
+
+[ext_resource type="Script" path="res://scripts/menu_handler.gd" id="1_5mk75"]
+[ext_resource type="FontFile" uid="uid://ct0h6u4i7brlh" path="res://Fonts/technocra/Technocra.otf" id="1_iltxe"]
+[ext_resource type="FontFile" uid="uid://d1ebduyy5ilg5" path="res://Fonts/TechnaSans-Regular.otf" id="2_lxrtq"]
+[ext_resource type="Script" path="res://scripts/Options_Menu.gd" id="4_5275e"]
+[ext_resource type="Theme" uid="uid://d1f13mtna64lj" path="res://Levels/gui_themes/Main_Menu_theme.theme" id="5_xvioa"]
+[ext_resource type="Script" path="res://scripts/Audio_Settings.gd" id="6_mmcyd"]
+
+[sub_resource type="Theme" id="Theme_12o7k"]
+
+[sub_resource type="Theme" id="Theme_mrqj5"]
+default_font_size = 200
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5mk75")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Space Frigate" type="Label" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iltxe")
+theme_override_font_sizes/font_size = 96
+text = "Star Hub Fighter"
+
+[node name="Resume" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 50
+text = "Resume Game"
+
+[node name="Options" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="Exit to Starhub" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 50
+text = "Exit to Starhub"
+
+[node name="Button" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 50
+text = "Exit to Desktop"
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 147.0
+offset_top = -29.0
+offset_right = 147.0
+offset_bottom = -29.0
+script = ExtResource("4_5275e")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_12o7k")
+
+[node name="Title" type="Label" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_xvioa")
+theme_override_fonts/font = ExtResource("1_iltxe")
+text = "Audio"
+
+[node name="Master" type="Label" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 46
+text = "Master
+"
+
+[node name="Master_Audio" type="HSlider" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Master Audio Control"
+theme = SubResource("Theme_mrqj5")
+max_value = 1.0
+step = 0.001
+script = ExtResource("6_mmcyd")
+bus_name = "Master"
+
+[node name="Accept" type="Button" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mrqj5")
+theme_override_fonts/font = ExtResource("2_lxrtq")
+theme_override_font_sizes/font_size = 72
+text = "Accept"
+
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Exit to Starhub" to="." method="_on_exit_to_starhub_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Accept" to="Options" method="_on_accept_pressed"]

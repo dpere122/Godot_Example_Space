@@ -16,9 +16,6 @@ func _ready()->void:
 	#structure about the basic function of these objects
 	ship_sprite_path = $Space_Ship.get_path()
 
-func _input(event)->void:
-	if(event.is_action_pressed("ui_console")):
-		toggle_pause()
 
 func _physics_process(delta):
 	#Here i need to spawn a bullet.
@@ -66,11 +63,6 @@ func destroyed() -> void:
 	explosion_node.position = get_global_transform().origin
 	$Space_Ship.queue_free()
 	$Hurtbox.queue_free()
-	
-	
-	
-	
-	
 	get_node("/root").add_child(explosion_node)
 	
 	var t = Timer.new()
@@ -94,10 +86,4 @@ func _on_eff_timer_timeout()-> void:
 	if(get_node_or_null(ship_sprite_path) != null):
 		$Space_Ship.material.set_shader_parameter("flash_mod",0)
 
-func toggle_pause() -> void:
-	if(!get_tree().paused):
-		get_tree().paused = true
-		print(get_tree().paused)
-	else:
-		get_tree().paused = false
-		print(get_tree().paused)
+

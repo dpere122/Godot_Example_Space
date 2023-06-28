@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bog2yfsesy5un"]
+[gd_scene load_steps=8 format=3 uid="uid://bog2yfsesy5un"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
 [ext_resource type="Script" path="res://scripts/game_details.gd" id="1_vvn3n"]
 [ext_resource type="PackedScene" uid="uid://cec3xrh6hcddf" path="res://Entities/player.tscn" id="2_nsest"]
 [ext_resource type="PackedScene" uid="uid://bf4kkd5cwre6d" path="res://Levels/ship_spawner.tscn" id="3_blgds"]
 [ext_resource type="PackedScene" uid="uid://ddc0tws5b7pen" path="res://Levels/kill_counter.tscn" id="4_qirp0"]
+[ext_resource type="PackedScene" uid="uid://duadrtslckb30" path="res://Levels/pause_menu_scene.tscn" id="6_d17ct"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftl1i"]
 load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8cd849d59e302b2e7db3.ctex"
@@ -33,3 +34,9 @@ offset_left = 562.0
 offset_top = 482.0
 offset_right = 562.0
 offset_bottom = 482.0
+
+[node name="pause_menu" parent="." instance=ExtResource("6_d17ct")]
+offset_left = -390.0
+offset_top = -211.0
+offset_right = -390.0
+offset_bottom = -211.0
