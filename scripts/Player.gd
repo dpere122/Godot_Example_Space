@@ -8,48 +8,60 @@ extends CharacterBody2D
 @export var damage : int = 50
 @export var weapon_filter : Color = Color(0,0,0,0)
 
+@export var weapons : Array[PackedScene]
+
 var ship_sprite_path : String = ""
+
+var shot_timer: float
 
 func _ready()->void:
 	#This can ensure certain features are available if componenets are added
 	#Though inheritance could probably be used instead to create a hiearchical
 	#structure about the basic function of these objects
 	ship_sprite_path = $Space_Ship.get_path()
-
-
-func _physics_process(delta):
-	#Here i need to spawn a bullet.
-	#the bullet then has to travel towards the enemies ahead.
-	if Input.is_action_just_released("ui_shoot"):
-		shootMainGun()
-#		if $shoot_timer.time_left <= 0:
-#			#Here I need to spawn a bullet
-#			#then use the parent function 
-#			$shoot_timer.start(-bullet_instance.cooldown)
 		
 
+func _physics_process(delta):
+	if(Input.is_action_pressed("ui_shoot")):
+		shot_timer += delta
+		if(shot_timer >= 0.2):
+			shot_main_gun()
+			shot_timer = 0
+	else:
+		shot_timer = 0
+		
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction : Vector2
+	direction = move_in_zone()
 	if direction:
-		velocity.x = direction * SPEED
+		velocity = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
 	move_and_slide()
 
-func shootMainGun()-> Node2D: 
+	
+func move_in_zone() -> Vector2:
+	var direction: Vector2
+	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	return direction
+	
+func shot_main_gun()-> void: 
 	##depending on the bullet I need to change the shoot timer.
 	#Each weapon/bullet type needs to have it's own cooldown
-	var bullet_scene: PackedScene = load("res://weapons/simple_bullet.tscn")
+#	var bullet_scene: PackedScene = load("res://weapons/Blue_bullet.tscn")
+#	var last_shot_dict: Dictionary = {}
+#	if(fmod(snapped(shot_timer,0.001),0.500) == snapped(0.000,0.001)):
+	var bullet_scene: PackedScene = load(weapons[0].get_path())
 	var bullet_node: Node2D = bullet_scene.instantiate()
 	bullet_node.damage = damage
 	bullet_node.isPlayer = true
 	bullet_node._set_texture_filter(weapon_filter)
-	$"shoot_sound".play();
+	$shoot_sound.play();
 	bullet_node.position = position
 	get_parent().add_child(bullet_node)
-	return bullet_node
+	print(snapped(shot_timer,0.001))
 	
 func flash()-> void:
 	if(get_node_or_null(ship_sprite_path) != null):
@@ -64,17 +76,7 @@ func destroyed() -> void:
 	$Space_Ship.queue_free()
 	$Hurtbox.queue_free()
 	get_node("/root").add_child(explosion_node)
-	
-	var t = Timer.new()
-	t.set_wait_time(5)
-	t.set_one_shot(true)
-	self.add_child(t)
-	t.start()
-	await t.timeout
-	t.queue_free()
-	
-	get_tree().change_scene_to_file("res://Levels/end_scene.tscn")
-	queue_free()
+	owner.player_restart(self)
 
 func take_damage(amount: int) -> void:
 	health -= amount

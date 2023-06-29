@@ -24,14 +24,16 @@ animations = [{
 material = ExtResource("1_lgpq3")
 script = ExtResource("1_m7n6a")
 speed = 1200.0
+cooldown = 1.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="bullet_sprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("1_lgpq3")
+use_parent_material = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ceuhs")
 autoplay = "default"
-frame_progress = 0.695286
+frame_progress = 0.445949
 metadata/_edit_group_ = true
 
 [node name="HitBox" parent="." instance=ExtResource("3_5qcxo")]

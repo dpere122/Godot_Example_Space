@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bog2yfsesy5un"]
+[gd_scene load_steps=9 format=3 uid="uid://dwolb6j0leo5o"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
 [ext_resource type="Script" path="res://scripts/game_details.gd" id="1_vvn3n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bf4kkd5cwre6d" path="res://Levels/ship_spawner.tscn" id="3_blgds"]
 [ext_resource type="PackedScene" uid="uid://ddc0tws5b7pen" path="res://Levels/kill_counter.tscn" id="4_qirp0"]
 [ext_resource type="PackedScene" uid="uid://duadrtslckb30" path="res://Levels/pause_menu_scene.tscn" id="6_d17ct"]
+[ext_resource type="PackedScene" uid="uid://b4umkxre81o5a" path="res://Levels/wall.tscn" id="7_j0rda"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftl1i"]
 load_path = "res://.godot/imported/Purple_Nebula_04-1024x1024.png-d4155acb081c8cd849d59e302b2e7db3.ctex"
@@ -40,3 +41,21 @@ offset_left = -390.0
 offset_top = -211.0
 offset_right = -390.0
 offset_bottom = -211.0
+
+[node name="Floor" parent="." instance=ExtResource("7_j0rda")]
+position = Vector2(-13, 567)
+scale = Vector2(6.84, 1)
+
+[node name="Wall_right" parent="." instance=ExtResource("7_j0rda")]
+position = Vector2(1000, 240)
+rotation = 1.56109
+scale = Vector2(1.97054, -1.02507)
+
+[node name="Wall_left" parent="." instance=ExtResource("7_j0rda")]
+position = Vector2(-992, 224)
+rotation = 1.56311
+scale = Vector2(2.24381, 1)
+
+[node name="Ceiling" parent="." instance=ExtResource("7_j0rda")]
+position = Vector2(13, -65)
+scale = Vector2(6.84, 1)

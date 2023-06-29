@@ -15,6 +15,8 @@ default_font_size = 200
 [node name="Pause_menu" type="Control"]
 process_mode = 3
 visible = false
+visibility_layer = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -61,7 +63,7 @@ theme_override_fonts/font = ExtResource("2_lxrtq")
 theme_override_font_sizes/font_size = 50
 text = "Exit to Starhub"
 
-[node name="Button" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+[node name="Exit to Desktop" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lxrtq")
 theme_override_font_sizes/font_size = 50
@@ -118,5 +120,5 @@ text = "Accept"
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Exit to Starhub" to="." method="_on_exit_to_starhub_pressed"]
-[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/Exit to Desktop" to="." method="_on_exit_to_desktop_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Accept" to="Options" method="_on_accept_pressed"]

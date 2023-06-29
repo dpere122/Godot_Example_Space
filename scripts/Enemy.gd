@@ -65,10 +65,9 @@ func destroyed() -> void:
 	var explosion: PackedScene = load("res://static_entity/explosion.tscn")
 	var explosion_node: Node2D = explosion.instantiate()
 	explosion_node.position = get_global_transform().origin
-	get_node("/root").get_child(0).update_kill_counter(points)
-	get_node("/root").get_child(0).add_child(explosion_node)
-	get_node("/root").get_child(0).update_ship_alive_count(-1)
-	queue_free()
+	get_node("/root").get_child(0).free_ship(self)	
+	get_node("/root").get_child(0).add_child(explosion_node)	
+	get_node("/root").get_child(0).update_ship_alive_count(points)	
 
 func _on_eff_timer_timeout():
 	$Space_Ship.material.set_shader_parameter("flash_mod",0)

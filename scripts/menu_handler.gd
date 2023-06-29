@@ -24,24 +24,23 @@ func _on_options_pressed():
 	get_node("Options").show()
 
 
-func _on_exit_to_starhub_pressed():
-	pass # Replace with function body.
-
-
-func _on_button_pressed():
-	pass # Replace with function body.
-
-
 func toggle_pause() -> void:
 	if(!get_tree().paused):
 		show()
 		get_node("MainMenu").show()
 		get_node("Options").hide()
 		get_tree().paused = true
-		print(get_tree().paused)
 	else:
 		hide()
 		get_node("MainMenu").hide()
 		get_node("Options").hide()
 		get_tree().paused = false
-		print(get_tree().paused)
+
+
+func _on_exit_to_starhub_pressed():
+	toggle_pause()
+	get_tree().change_scene_to_file("res://Levels/Menu_scene.tscn")
+
+func _on_exit_to_desktop_pressed():
+	toggle_pause()	
+	get_tree().quit()

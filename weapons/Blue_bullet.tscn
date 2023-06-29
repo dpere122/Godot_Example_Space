@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://brcudhtviye0u"]
+
+[ext_resource type="Material" uid="uid://cydvf2kwv6nyl" path="res://material-shaders/simple_bullet_material.tres" id="1_vuhh2"]
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="2_18um3"]
+[ext_resource type="Texture2D" uid="uid://c0gxf02ubqkq5" path="res://Blue_shot.png" id="3_djvew"]
+[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/Entity/Hitbox_component.tscn" id="5_t5xn0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is427"]
+atlas = ExtResource("3_djvew")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5yhi"]
+atlas = ExtResource("3_djvew")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ceuhs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is427")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5yhi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Blue_Bullet" type="Node2D"]
+scale = Vector2(4.04, 4.04)
+script = ExtResource("2_18um3")
+speed = 1200.0
+cooldown = 0.5
+
+[node name="bullet_sprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("1_vuhh2")
+use_parent_material = true
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.247526, 0.247526)
+sprite_frames = SubResource("SpriteFrames_ceuhs")
+autoplay = "default"
+frame_progress = 0.274052
+
+[node name="HitBox" parent="." instance=ExtResource("5_t5xn0")]
+visible = false
+scale = Vector2(1.04255, 1.55312)
