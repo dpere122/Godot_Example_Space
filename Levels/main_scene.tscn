@@ -25,7 +25,6 @@ texture = SubResource("CompressedTexture2D_ftl1i")
 [node name="Player" parent="." instance=ExtResource("2_nsest")]
 position = Vector2(0, 422)
 scale = Vector2(1.68, 1.68)
-weapon_filter = Color(0.8, 0.137255, 0.521569, 1)
 
 [node name="Ship_Spawner" parent="." instance=ExtResource("3_blgds")]
 position = Vector2(-878, -454)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://281iujuy1qwx"]
+
+[ext_resource type="Script" path="res://scripts/main_gun.gd" id="1_cv14g"]
+[ext_resource type="PackedScene" uid="uid://brcudhtviye0u" path="res://weapons/Blue_bullet.tscn" id="2_qcxkb"]
+[ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="3_y5keg"]
+
+[node name="main_gun_basic" type="Node2D"]
+script = ExtResource("1_cv14g")
+weapon_node = ExtResource("2_qcxkb")
+weapon_filter = Color(0.470588, 0.25098, 1, 1)
+shoot_step = 0.5
+damage = 40
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y5keg")

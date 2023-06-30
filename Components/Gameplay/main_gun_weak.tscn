@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnh0pp71e6e5x"]
+
+[ext_resource type="Script" path="res://scripts/main_gun.gd" id="1_pjwlm"]
+[ext_resource type="PackedScene" uid="uid://cc5wo3wudlcc" path="res://weapons/simple_bullet.tscn" id="2_askx7"]
+[ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="3_s7u0j"]
+
+[node name="main_gun_weak" type="Node2D"]
+script = ExtResource("1_pjwlm")
+weapon_node = ExtResource("2_askx7")
+weapon_filter = Color(0.945098, 0, 0.454902, 1)
+shoot_step = 0.2
+damage = 10
+min_shoot_step = 1.0
+max_shoot_step = 3.0
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s7u0j")

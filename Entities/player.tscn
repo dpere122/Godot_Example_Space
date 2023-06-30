@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cec3xrh6hcddf"]
+[gd_scene load_steps=11 format=3 uid="uid://cec3xrh6hcddf"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_5ihbb"]
 [ext_resource type="Texture2D" uid="uid://mp8ud13md5ip" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_BLUE.png" id="1_u0k34"]
 [ext_resource type="PackedScene" uid="uid://476rhqfba8lf" path="res://Components/Entity/Hurtbox_component.tscn" id="2_8gqq3"]
-[ext_resource type="PackedScene" uid="uid://brcudhtviye0u" path="res://weapons/Blue_bullet.tscn" id="2_75gte"]
 [ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_dwqa3"]
 [ext_resource type="Material" uid="uid://c0ccpdud3ipe7" path="res://material-shaders/Flashing_material.tres" id="2_ps151"]
 [ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_6kvpb"]
-[ext_resource type="PackedScene" uid="uid://cc5wo3wudlcc" path="res://weapons/simple_bullet.tscn" id="3_v7qa4"]
-[ext_resource type="AudioStream" uid="uid://bnh2dgwrbxtyc" path="res://Sounds/SFX/Laser_shoot 39.wav" id="5_cjeqn"]
+[ext_resource type="PackedScene" uid="uid://dnh0pp71e6e5x" path="res://Components/Gameplay/main_gun_weak.tscn" id="4_6o7n5"]
+[ext_resource type="PackedScene" uid="uid://281iujuy1qwx" path="res://Components/Gameplay/main_gun_basic.tscn" id="10_ixuhr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12gyc"]
 size = Vector2(64, 52)
@@ -36,8 +35,6 @@ platform_wall_layers = 1
 script = ExtResource("1_5ihbb")
 SPEED = 500.0
 health = 40.0
-weapon_filter = Color(0.878431, 0.913725, 1, 1)
-weapons = Array[PackedScene]([ExtResource("2_75gte"), ExtResource("3_v7qa4")])
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_8gqq3")]
 scale = Vector2(3.16, 1.96)
@@ -67,12 +64,11 @@ sprite_frames = SubResource("SpriteFrames_4uk1d")
 autoplay = "default"
 frame_progress = 0.474615
 
-[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_cjeqn")
-
 [node name="eff_timer" type="Timer" parent="."]
 wait_time = 0.07
 
-[node name="bullet_time" type="Timer" parent="."]
+[node name="main_gun_basic" parent="." instance=ExtResource("10_ixuhr")]
+
+[node name="main_gun_weak" parent="." instance=ExtResource("4_6o7n5")]
 
 [connection signal="timeout" from="eff_timer" to="." method="_on_eff_timer_timeout"]
