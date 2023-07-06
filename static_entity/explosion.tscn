@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dja33fvx0lthn"]
 
-[ext_resource type="Texture2D" uid="uid://ixrtmalfpbjx" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Explosion.png" id="1_mrvb3"]
+[ext_resource type="Texture2D" uid="uid://ixrtmalfpbjx" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Explosion.png" id="1_mrvb3"]
 [ext_resource type="Script" path="res://static_entity/explosion.gd" id="1_p2j7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sktp"]

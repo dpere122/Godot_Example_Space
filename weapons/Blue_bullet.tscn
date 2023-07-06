@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://brcudhtviye0u"]
 
-[ext_resource type="Material" uid="uid://cydvf2kwv6nyl" path="res://material-shaders/simple_bullet_material.tres" id="1_vuhh2"]
+[ext_resource type="Material" uid="uid://cydvf2kwv6nyl" path="res://material_shaders/simple_bullet_material.tres" id="1_vuhh2"]
 [ext_resource type="Script" path="res://scripts/Projectile.gd" id="2_18um3"]
 [ext_resource type="Texture2D" uid="uid://c0gxf02ubqkq5" path="res://Blue_shot.png" id="3_djvew"]
-[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/Entity/Hitbox_component.tscn" id="5_t5xn0"]
+[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/General_ship_components/Hitbox_component.tscn" id="5_t5xn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_is427"]
 atlas = ExtResource("3_djvew")

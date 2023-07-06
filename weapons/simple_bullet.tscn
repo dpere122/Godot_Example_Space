@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cc5wo3wudlcc"]
 
-[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="1_74il0"]
-[ext_resource type="Material" uid="uid://cydvf2kwv6nyl" path="res://material-shaders/simple_bullet_material.tres" id="1_lgpq3"]
+[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="1_74il0"]
+[ext_resource type="Material" uid="uid://cydvf2kwv6nyl" path="res://material_shaders/simple_bullet_material.tres" id="1_lgpq3"]
 [ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_m7n6a"]
-[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="2_5rl7f"]
-[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/Entity/Hitbox_component.tscn" id="3_5qcxo"]
+[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="2_5rl7f"]
+[ext_resource type="PackedScene" uid="uid://c62sffl360i2a" path="res://Components/General_ship_components/Hitbox_component.tscn" id="3_5qcxo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ceuhs"]
 animations = [{

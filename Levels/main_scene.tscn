@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwolb6j0leo5o"]
+[gd_scene load_steps=10 format=3 uid="uid://dwolb6j0leo5o"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
 [ext_resource type="Script" path="res://scripts/game_details.gd" id="1_vvn3n"]
+[ext_resource type="PackedScene" uid="uid://d22wrjbprlw0a" path="res://Components/World_Space/item_pickup.tscn" id="2_h102m"]
 [ext_resource type="PackedScene" uid="uid://cec3xrh6hcddf" path="res://Entities/player.tscn" id="2_nsest"]
 [ext_resource type="PackedScene" uid="uid://bf4kkd5cwre6d" path="res://Levels/ship_spawner.tscn" id="3_blgds"]
 [ext_resource type="PackedScene" uid="uid://ddc0tws5b7pen" path="res://Levels/kill_counter.tscn" id="4_qirp0"]
@@ -58,3 +59,6 @@ scale = Vector2(2.24381, 1)
 [node name="Ceiling" parent="." instance=ExtResource("7_j0rda")]
 position = Vector2(13, -65)
 scale = Vector2(6.84, 1)
+
+[node name="item_pickup2" parent="." instance=ExtResource("2_h102m")]
+position = Vector2(-484, 224)

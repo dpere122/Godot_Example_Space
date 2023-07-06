@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdo2n1kkfo3xu"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_lbifv"]
-[ext_resource type="Texture2D" uid="uid://cwhmps2lfns1w" path="res://static-backgrounds/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="2_8304t"]
+[ext_resource type="Texture2D" uid="uid://cwhmps2lfns1w" path="res://static_backgrounds/Large 1024x1024/Blue Nebula/Blue_Nebula_02-1024x1024.png" id="2_8304t"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_t2tg7"]
 
 [node name="Node2D" type="Node2D"]

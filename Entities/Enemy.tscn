@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bllkmqij6rpqf"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_p1pyv"]
-[ext_resource type="Material" uid="uid://c0ccpdud3ipe7" path="res://material-shaders/Flashing_material.tres" id="2_6sp47"]
-[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_7rig7"]
-[ext_resource type="Texture2D" uid="uid://ddfxe62w61kp5" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/02/Spaceship_02_RED.png" id="2_ykd8j"]
-[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static-backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_i7xqu"]
-[ext_resource type="PackedScene" uid="uid://476rhqfba8lf" path="res://Components/Entity/Hurtbox_component.tscn" id="5_2n3d5"]
-[ext_resource type="PackedScene" uid="uid://dnh0pp71e6e5x" path="res://Components/Gameplay/main_gun_weak.tscn" id="7_1qxf6"]
+[ext_resource type="Material" uid="uid://c0ccpdud3ipe7" path="res://material_shaders/Flashing_material.tres" id="2_6sp47"]
+[ext_resource type="Texture2D" uid="uid://u73jlqjlsfn0" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_7rig7"]
+[ext_resource type="Texture2D" uid="uid://ddfxe62w61kp5" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Spaceships/02/Spaceship_02_RED.png" id="2_ykd8j"]
+[ext_resource type="Texture2D" uid="uid://d2x0mrhwa6waq" path="res://static_backgrounds/Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_i7xqu"]
+[ext_resource type="PackedScene" uid="uid://476rhqfba8lf" path="res://Components/General_ship_components/Hurtbox_component.tscn" id="5_2n3d5"]
+[ext_resource type="PackedScene" uid="uid://dnh0pp71e6e5x" path="res://Components/ship_components/main_gun_weak.tscn" id="7_1qxf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfxf4"]
 size = Vector2(94.9998, 94.0002)
