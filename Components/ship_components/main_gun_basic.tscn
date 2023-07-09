@@ -13,3 +13,5 @@ damage = 40
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_y5keg")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

@@ -31,16 +31,3 @@ func _physics_process(delta):
 		position.y += speed *delta
 	
 
-#if bullet hits object then do damage to it as long as it's either an enemy or player
-#func _on_area_2d_body_entered(body) -> void:
-#	if(isPlayer and body.entity_type == "Enemy"):
-#		body.health -= damage
-#		print(body.name,":",body.health)
-#		if(body.health <= 0):
-#			body.destroyed()
-#	elif(!isPlayer and body.entity_type == "Player"):
-#		body.health -= damage
-#		if(body.health <= 0):
-#			body.destroyed()
-
-

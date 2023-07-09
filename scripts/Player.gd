@@ -5,7 +5,6 @@ extends CharacterBody2D
 
 @export var entity_type = "Player"
 @export var health : float = 100
-@export var damage : int = 50
 
 var ship_sprite_path : String = ""
 
@@ -56,6 +55,14 @@ func take_damage(amount: int) -> void:
 	flash()
 	if(health <= 0):
 		destroyed()
+		
+func add_weapon(weapon :PackedScene) -> void:
+	var n_weapon: Node2D = weapon.instantiate()
+	n_weapon.is_ship_player = true
+	n_weapon.owner_node = self
+	add_child(n_weapon)
+	n_weapon.position = self.get_global_transform().get_origin()
+	
 
 func _on_eff_timer_timeout()-> void:
 	if(get_node_or_null(ship_sprite_path) != null):

@@ -10,12 +10,12 @@ extends Node2D
 
 var shot_timer: float
 var is_ship_player: bool = false
+var owner_node: Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	if(owner.entity_type == "Player"):
-		is_ship_player = true
-
+	if(owner != null):
+		if(owner.entity_type == "Player"):
+			is_ship_player = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,6 +43,10 @@ func shoot_main_gun()-> void:
 		bullet_node.isPlayer = false
 	bullet_node._set_texture_filter(weapon_filter)
 	$shoot_sound.play();
-	bullet_node.position = owner.position
+	if(owner != null):
+		bullet_node.position = owner.position
+	else:
+		bullet_node.position = owner_node.position
+			
 	get_node("/root").get_child(0).add_child(bullet_node)
 

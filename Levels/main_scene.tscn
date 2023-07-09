@@ -25,6 +25,7 @@ texture = ExtResource("3_tl6ad")
 [node name="Player" parent="." instance=ExtResource("2_nsest")]
 position = Vector2(0, 422)
 scale = Vector2(1.68, 1.68)
+health = 100.0
 
 [node name="Ship_Spawner" parent="." instance=ExtResource("3_blgds")]
 position = Vector2(-878, -454)
@@ -59,5 +60,5 @@ scale = Vector2(2.24381, 1)
 position = Vector2(13, -65)
 scale = Vector2(6.84, 1)
 
-[node name="item_pickup2" parent="." instance=ExtResource("2_h102m")]
-position = Vector2(-484, 224)
+[node name="item_pickup" parent="." instance=ExtResource("2_h102m")]
+position = Vector2(-517, 320)

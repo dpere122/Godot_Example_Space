@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d22wrjbprlw0a"]
+[gd_scene load_steps=6 format=3 uid="uid://d22wrjbprlw0a"]
 
 [ext_resource type="Script" path="res://scripts/pickup_item.gd" id="1_f7s0b"]
 [ext_resource type="Texture2D" uid="uid://hd6w80sfkb8u" path="res://icon.svg" id="1_srhxo"]
+[ext_resource type="PackedScene" uid="uid://dnh0pp71e6e5x" path="res://Components/ship_components/main_gun_weak.tscn" id="2_pe0sk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5k0k"]
 size = Vector2(130, 130)
@@ -19,6 +20,7 @@ animations = [{
 
 [node name="item_pickup" type="Area2D"]
 script = ExtResource("1_f7s0b")
+weapon_list = Array[PackedScene]([ExtResource("2_pe0sk")])
 
 [node name="collision_box" type="CollisionShape2D" parent="."]
 z_index = 1
