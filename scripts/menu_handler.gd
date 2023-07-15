@@ -10,11 +10,6 @@ func _input(event)->void:
 	if(event.is_action_pressed("ui_console")):
 		toggle_pause()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_resume_pressed():
 	toggle_pause()
 	

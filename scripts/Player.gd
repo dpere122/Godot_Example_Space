@@ -19,6 +19,12 @@ func _ready()->void:
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
+#	look_at(get_viewport().get_camera_2d().get_global_mouse_position())
+	var mouse_pos = get_viewport().get_camera_2d().get_global_mouse_position()
+	#Custom rotation
+#	print(mouse_pos)
+	rotation_degrees = atan2(mouse_pos.y,mouse_pos.x)
+#	rotation = *PI/180
 	var direction : Vector2
 	direction = move_in_zone()
 	if direction:
@@ -48,6 +54,8 @@ func destroyed() -> void:
 	$Space_Ship.queue_free()
 	$Hurtbox.queue_free()
 	get_node("/root").add_child(explosion_node)
+	#find a way to respawn player from hub
+	#send pod back to hub
 	owner.player_restart(self)
 
 func take_damage(amount: int) -> void:

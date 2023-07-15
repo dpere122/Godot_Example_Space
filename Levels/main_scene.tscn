@@ -1,25 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwolb6j0leo5o"]
+[gd_scene load_steps=9 format=3 uid="uid://dwolb6j0leo5o"]
 
 [ext_resource type="Material" uid="uid://cxythsi0hthrn" path="res://Levels/Background_Shader.tres" id="1_3fbn8"]
 [ext_resource type="Script" path="res://scripts/game_details.gd" id="1_vvn3n"]
 [ext_resource type="PackedScene" uid="uid://d22wrjbprlw0a" path="res://Components/World_Space/item_pickup.tscn" id="2_h102m"]
 [ext_resource type="PackedScene" uid="uid://cec3xrh6hcddf" path="res://Entities/player.tscn" id="2_nsest"]
-[ext_resource type="PackedScene" uid="uid://bf4kkd5cwre6d" path="res://Levels/ship_spawner.tscn" id="3_blgds"]
 [ext_resource type="Texture2D" uid="uid://bcpfm0q4xsume" path="res://static_backgrounds/Large 1024x1024/Purple Nebula/Purple_Nebula_06-1024x1024.png" id="3_tl6ad"]
 [ext_resource type="PackedScene" uid="uid://ddc0tws5b7pen" path="res://Levels/kill_counter.tscn" id="4_qirp0"]
 [ext_resource type="PackedScene" uid="uid://duadrtslckb30" path="res://Levels/pause_menu_scene.tscn" id="6_d17ct"]
-[ext_resource type="PackedScene" uid="uid://b4umkxre81o5a" path="res://Levels/wall.tscn" id="7_j0rda"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="10_hxa0c"]
 
 [node name="Main_Scene" type="Node2D"]
 script = ExtResource("1_vvn3n")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1.90735e-06, -1.52588e-05)
-
 [node name="Background" type="Sprite2D" parent="."]
 material = ExtResource("1_3fbn8")
-position = Vector2(-1.00001, -141)
-scale = Vector2(2.14014, 2.14014)
+position = Vector2(0, 98)
+scale = Vector2(1.89624, 1.89624)
 texture = ExtResource("3_tl6ad")
 
 [node name="Player" parent="." instance=ExtResource("2_nsest")]
@@ -27,38 +23,16 @@ position = Vector2(0, 422)
 scale = Vector2(1.68, 1.68)
 health = 100.0
 
-[node name="Ship_Spawner" parent="." instance=ExtResource("3_blgds")]
-position = Vector2(-878, -454)
-
-[node name="KillCounter" parent="." instance=ExtResource("4_qirp0")]
-offset_left = 562.0
-offset_top = 482.0
-offset_right = 562.0
-offset_bottom = 482.0
-
-[node name="pause_menu" parent="." instance=ExtResource("6_d17ct")]
-offset_left = -390.0
-offset_top = -211.0
-offset_right = -390.0
-offset_bottom = -211.0
-
-[node name="Floor" parent="." instance=ExtResource("7_j0rda")]
-position = Vector2(-13, 567)
-scale = Vector2(6.84, 1)
-
-[node name="Wall_right" parent="." instance=ExtResource("7_j0rda")]
-position = Vector2(1000, 240)
-rotation = 1.56109
-scale = Vector2(1.97054, -1.02507)
-
-[node name="Wall_left" parent="." instance=ExtResource("7_j0rda")]
-position = Vector2(-992, 224)
-rotation = 1.56311
-scale = Vector2(2.24381, 1)
-
-[node name="Ceiling" parent="." instance=ExtResource("7_j0rda")]
-position = Vector2(13, -65)
-scale = Vector2(6.84, 1)
-
 [node name="item_pickup" parent="." instance=ExtResource("2_h102m")]
 position = Vector2(-517, 320)
+
+[node name="item_pickup2" parent="." instance=ExtResource("2_h102m")]
+position = Vector2(621, 320)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+script = ExtResource("10_hxa0c")
+
+[node name="KillCounter" parent="." instance=ExtResource("4_qirp0")]
+
+[node name="Pause_menu" parent="." instance=ExtResource("6_d17ct")]

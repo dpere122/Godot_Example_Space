@@ -4,9 +4,12 @@ extends Node2D
 @export var weapon_filter : Color = Color(0,0,0,0)
 @export var shoot_step: float
 @export var damage: int
+@export var is_infinite: bool
+@export var timer: float
 @export_category("Enemy Settings")
 @export var min_shoot_step: float
 @export var max_shoot_step:float
+
 
 var shot_timer: float
 var is_ship_player: bool = false
@@ -44,8 +47,10 @@ func shoot_main_gun()-> void:
 	bullet_node._set_texture_filter(weapon_filter)
 	$shoot_sound.play();
 	if(owner != null):
+		bullet_node.owner_node = owner
 		bullet_node.position = owner.position
 	else:
+		bullet_node.owner_node = owner_node
 		bullet_node.position = owner_node.position
 			
 	get_node("/root").get_child(0).add_child(bullet_node)
