@@ -64,8 +64,10 @@ func take_damage(amount: int) -> void:
 	if(health <= 0):
 		destroyed()
 		
-func add_weapon(weapon :PackedScene) -> void:
+func add_weapon(weapon :PackedScene, temp_weapon:bool, gun_timer:float) -> void:
 	var n_weapon: Node2D = weapon.instantiate()
+	n_weapon.temp_weapon = temp_weapon
+	n_weapon.timer = gun_timer
 	n_weapon.is_ship_player = true
 	n_weapon.owner_node = self
 	add_child(n_weapon)

@@ -4,8 +4,6 @@ extends Node2D
 @export var weapon_filter : Color = Color(0,0,0,0)
 @export var shoot_step: float
 @export var damage: int
-@export var is_infinite: bool
-@export var timer: float
 @export_category("Enemy Settings")
 @export var min_shoot_step: float
 @export var max_shoot_step:float
@@ -14,14 +12,26 @@ extends Node2D
 var shot_timer: float
 var is_ship_player: bool = false
 var owner_node: Node2D
+var gun_timer: Timer
+var temp_weapon: bool
+var timer: float
 
 func _ready():
 	if(owner != null):
 		if(owner.entity_type == "Player"):
 			is_ship_player = true
+	if(temp_weapon):
+		gun_timer = Timer.new()
+		gun_timer.set_wait_time(timer)
+		gun_timer.set_one_shot(true)
+		self.add_child(gun_timer)
+		gun_timer.start()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(temp_weapon and gun_timer.time_left <= 0):
+		queue_free()
 	if(is_ship_player):
 		if(Input.is_action_pressed("ui_shoot")):
 			shot_timer += delta

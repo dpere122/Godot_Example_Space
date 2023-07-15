@@ -13,9 +13,7 @@ var y: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	position = owner_node.position
 	global_rotation_degrees = owner_node.rotation_degrees
-	print(owner_node.rotation)
 	
 	
 func _set_texture_filter(color:Color) -> void:

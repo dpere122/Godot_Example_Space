@@ -25,6 +25,8 @@ health = 100.0
 
 [node name="item_pickup" parent="." instance=ExtResource("2_h102m")]
 position = Vector2(-517, 320)
+temp_weapon = true
+gun_timer = 5.0
 
 [node name="item_pickup2" parent="." instance=ExtResource("2_h102m")]
 position = Vector2(621, 320)
