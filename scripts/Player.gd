@@ -23,7 +23,7 @@ func _physics_process(delta):
 	var mouse_pos = get_viewport().get_camera_2d().get_global_mouse_position()
 	#Custom rotation
 #	print(mouse_pos)
-	rotation_degrees = atan2(mouse_pos.y,mouse_pos.x)
+	rotation = atan2(mouse_pos.y-position.y,mouse_pos.x-position.x)
 #	rotation = *PI/180
 	var direction : Vector2
 	direction = move_in_zone()

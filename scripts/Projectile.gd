@@ -14,7 +14,9 @@ var y: float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	position = owner_node.position
-	rotation_degrees = owner_node.rotation_degrees
+	global_rotation_degrees = owner_node.rotation_degrees
+	print(owner_node.rotation)
+	
 	
 func _set_texture_filter(color:Color) -> void:
 	$bullet_sprite.material.set_shader_parameter("Color_Filter",color)

@@ -47,6 +47,7 @@ z_index = 1
 z_as_relative = false
 material = ExtResource("2_ps151")
 position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 1.5708
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("1_u0k34")
 

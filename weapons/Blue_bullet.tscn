@@ -37,11 +37,12 @@ cooldown = 0.5
 material = ExtResource("1_vuhh2")
 use_parent_material = true
 position = Vector2(2.08165e-12, 2.08165e-12)
+rotation = 1.5708
 scale = Vector2(0.247526, 0.247526)
 sprite_frames = SubResource("SpriteFrames_ceuhs")
 autoplay = "default"
 frame_progress = 0.274052
 
 [node name="HitBox" parent="." instance=ExtResource("5_t5xn0")]
-visible = false
-scale = Vector2(1.04255, 1.55312)
+rotation = 1.5708
+scale = Vector2(0.566916, 0.844553)
