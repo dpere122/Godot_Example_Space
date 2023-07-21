@@ -15,3 +15,5 @@ max_shoot_step = 3.0
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s7u0j")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

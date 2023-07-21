@@ -4,6 +4,7 @@ extends Node2D
 @export var weapon_filter : Color = Color(0,0,0,0)
 @export var shoot_step: float
 @export var damage: int
+@export var double_gun: bool
 @export_category("Enemy Settings")
 @export var min_shoot_step: float
 @export var max_shoot_step:float
@@ -15,6 +16,7 @@ var owner_node: Node2D
 var gun_timer: Timer
 var temp_weapon: bool
 var timer: float
+var dual_gun_pos: Vector2
 
 func _ready():
 	if(owner != null):
@@ -36,6 +38,9 @@ func _process(delta):
 		if(Input.is_action_pressed("ui_shoot")):
 			shot_timer += delta
 			if(shot_timer >= shoot_step):
+#				if(double_gun):
+#					shoot_double_gun()
+#				else:
 				shoot_main_gun()
 				shot_timer = 0
 		else:
@@ -56,12 +61,14 @@ func shoot_main_gun()-> void:
 		bullet_node.isPlayer = false
 	bullet_node._set_texture_filter(weapon_filter)
 	$shoot_sound.play();
-	if(owner != null):
-		bullet_node.owner_node = owner
-		bullet_node.position = owner.position
-	else:
-		bullet_node.owner_node = owner_node
-		bullet_node.position = owner_node.position
-			
-	get_node("/root").get_child(0).add_child(bullet_node)
+	bullet_node.owner_node = owner_node
+	bullet_node.position = owner_node.position
+		
+	get_node("/root").get_child(0).add_child(bullet_node)	
 
+
+func _on_tree_entered():
+	if(owner_node == null):
+		if(owner != null):
+			if(owner.entity_type == "Player"):
+				owner_node = owner

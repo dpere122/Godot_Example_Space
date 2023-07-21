@@ -10,6 +10,7 @@ weapon_node = ExtResource("2_qcxkb")
 weapon_filter = Color(0.470588, 0.25098, 1, 1)
 shoot_step = 0.5
 damage = 40
+double_gun = true
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_y5keg")
