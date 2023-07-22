@@ -5,6 +5,8 @@ extends Node2D
 @export var shoot_step: float
 @export var damage: int
 @export var double_gun: bool
+@export var left_gun: Node2D
+@export var right_gun: Node2D
 @export_category("Enemy Settings")
 @export var min_shoot_step: float
 @export var max_shoot_step:float
@@ -38,9 +40,6 @@ func _process(delta):
 		if(Input.is_action_pressed("ui_shoot")):
 			shot_timer += delta
 			if(shot_timer >= shoot_step):
-#				if(double_gun):
-#					shoot_double_gun()
-#				else:
 				shoot_main_gun()
 				shot_timer = 0
 		else:

@@ -11,7 +11,7 @@ var owner_node: Node2D
 var x: float
 var y: float
 
-var gun_offset: float
+var gun_pos: Transform2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,10 +22,10 @@ func _set_texture_filter(color:Color) -> void:
 
 	
 func _physics_process(delta):
-	if(gun_offset == 0):
+	if(gun_pos == null):
 		y = position.y + ((delta*speed) * sin(rotation_degrees*(PI/180)))
 		x = position.x + ((delta*speed) * cos(rotation_degrees*(PI/180)))
 	else:
-		y = (position.y + gun_offset) + ((delta*speed) * sin(rotation_degrees*(PI/180)))
-		x = position.x + ((delta*speed) * cos(rotation_degrees*(PI/180)))
+		y = gun_pos.y + ((delta*speed) * sin(rotation_degrees*(PI/180)))
+		x = gun_pos.x + ((delta*speed) * cos(rotation_degrees*(PI/180)))
 	position = Vector2(x,y)
